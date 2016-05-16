@@ -45,7 +45,7 @@ public class AutoRunner implements Runnable{
     }  
     private void sleep(){
         try{
-            Thread.sleep(250);
+            Thread.sleep(50);
         }
         catch(Exception e){
 

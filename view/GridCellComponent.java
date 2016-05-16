@@ -32,9 +32,9 @@ public class GridCellComponent extends JComponent{
     }
     public void setActive(boolean newActive){
         this.active = newActive;
-        // this.repaint();;
+        this.repaint();;
         // this.getParent().repaint();
-        this.getParent().getParent().repaint();
+        // this.getParent().getParent().repaint();
     }
     public boolean isActive(){
         return this.active; 

@@ -8,7 +8,7 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
-public class GOLController implements MouseListener,ActionListener{
+public class GOLController implements MouseListener,ActionListener,Runnable{
 	private GOLView view;
 	private GOLField field;
 	private AutoRunner runner;
@@ -19,7 +19,7 @@ public class GOLController implements MouseListener,ActionListener{
 		this.view = new GOLView(this,this,fieldSizeX,fieldSizeY);
 		this.field = new GOLField(fieldSizeX,fieldSizeY,this);
 	}
-    public void showView(){
+    public void run(){
         SwingUtilities.invokeLater(this.view);   
     }
 
