@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# ./clean && javac Main.java && java Main
+./clean && javac controller/GOLController.java && java controller/GOLController
+./clean
