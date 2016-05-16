@@ -26,14 +26,15 @@ public class GridCellComponent extends JComponent{
         this.leftAttached = leftAttached;
         this.rightAttached = rightAttached;
         System.out.printf("cell at (%d,%d) top:%b bot:%b left:%b right:%b\n",indexX,indexY,topAttached,bottomAttached,leftAttached,rightAttached);
-        this.setActive(false);
     }
     public Dimension getPreferredSize(){
         return new Dimension(50,50); 
     }
     public void setActive(boolean newActive){
         this.active = newActive;
-        this.repaint();;
+        // this.repaint();;
+        // this.getParent().repaint();
+        this.getParent().getParent().repaint();
     }
     public boolean isActive(){
         return this.active; 
