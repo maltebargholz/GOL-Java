@@ -19,6 +19,7 @@ public class AutoRunner implements Runnable{
             System.out.println("Runnable EVT: " + javax.swing.SwingUtilities.isEventDispatchThread());                         
             sleep();
 
+ 
             long startTime = System.nanoTime();
             ArrayList<FieldChange> changed = field.step();
             long endTime = System.nanoTime();

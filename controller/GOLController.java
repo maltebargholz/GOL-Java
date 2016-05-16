@@ -67,7 +67,10 @@ public class GOLController implements MouseListener,ActionListener{
 		String cmd = e.getActionCommand();
 		AbstractButton aBtn = (AbstractButton)e.getSource();
 		if(cmd.equals("Step")){
-			this.field.step();
+            ArrayList<FieldChange> changes = this.field.step();
+            for(FieldChange change: changes){
+                this.view.updateGrid(change.x,change.y,change.value);
+            }
 		}
 		else if(cmd.equals("Auto-Step")){
 			JToggleButton btn = (JToggleButton)aBtn;
@@ -84,15 +87,6 @@ public class GOLController implements MouseListener,ActionListener{
 				//stop the thread
 				this.runner.stopRunning();
 			}
-		}
-		else if(cmd.equals("Reset")){
-			//reset model
-			this.field.resetState();
-			//reset view
-			this.view.resetGrid();
-		}
-		else if(cmd.equals("Calculate Static")){  
-			this.view.displayDialog("Static Objects",this.field.calculateAmountOfStableLifeforms());
 		}
 	}
 }

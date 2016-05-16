@@ -18,9 +18,6 @@ public class GridCellComponent extends JComponent{
         this.addMouseListener(handler);
         this.indexX = indexX;
         this.indexY = indexY;
-        //some layouting
-        // this.setPreferredSize(new Dimension(5,5));
-        // this.setMinimumSize(new Dimension(5,5));
     }
     public GridCellComponent(MouseListener handler,int indexX,int indexY, boolean topAttached,boolean bottomAttached,boolean leftAttached,boolean rightAttached){
         this(handler,indexX,indexY);

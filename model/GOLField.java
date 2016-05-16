@@ -68,69 +68,12 @@ public class GOLField{
         return changed;
     }
     
-    public int getRows(){
-        return this.state.getRows();
-    }
-    public int getColumns(){
-       return this.state.getColumns(); 
-    }
     public boolean getValue(int x, int y){
         return this.state.getValue(y,x);
     }
     public void setValue(FieldChange change){
         this.state.setValue(change.y,change.x,change.value);//Matrix is accessed like row,column which is y,x 
     }
-
-    public void resetState(){
-        int row = this.state.getRows();
-        int col = this.state.getColumns();
-
-        this.state = new BinaryMatrix(row,col);
-    }
-    public void printState(){
-        System.out.println(this.state); 
-    }
-
-    //Stable Matrix Systems
-    private static BinaryMatrix stableBlock(){
-        return new BinaryMatrix(new boolean[][]{
-                                                {true,true},
-                                                {true,true}
-                                               });    
-    }
-    private static BinaryMatrix stablePond(){
-        return new BinaryMatrix(new boolean[][]{
-                                                {false,true,true,false},
-                                                {true,false,false,true},
-                                                {true,false,false,true},
-                                                {false,true,true,false}
-                                               });
-    }
-    private static BinaryMatrix stableLoaf(){
-        return new BinaryMatrix(new boolean[][]{
-            {false,true,true,false},
-            {true,false,false,true},
-            {false,true,false,true},
-            {false,false,true,false}
-        });
-    }
-    private static BinaryMatrix stableTub(){
-        return new BinaryMatrix(new boolean[][]{
-            {false,true,false},
-            {true,false,true},
-            {false,true,false}
-        });
-    
-    }
-    public String calculateAmountOfStableLifeforms(){
-        return String.format("Block: %d\nTub: %d\nLoaf: %d\nPond: %d\n",
-                this.state.amountOfMatchesForSubmatrix(stableBlock()),
-                this.state.amountOfMatchesForSubmatrix(stableTub()),
-                this.state.amountOfMatchesForSubmatrix(stableLoaf()),
-                this.state.amountOfMatchesForSubmatrix(stablePond())
-                );
-    }
-
     //Helper Methods.
     private static int amountOfAliveInMatrix(BinaryMatrix mat){
         int amount = 0;

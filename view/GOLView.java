@@ -43,11 +43,9 @@ public class GOLView implements Runnable{
         buttons.setLayout(new FlowLayout());
 
         //Buttons
-        this.controlButtons = new AbstractButton[4];
+        this.controlButtons = new AbstractButton[2];
         this.controlButtons[0] = new JButton("Step");
         this.controlButtons[1] = new JToggleButton("Auto-Step");
-        this.controlButtons[2] = new JButton("Reset");
-        this.controlButtons[3] = new JButton("Calculate Static");
         for(AbstractButton btn : this.controlButtons){
             btn.addActionListener(this.buttonHandler);
             buttons.add(btn);
@@ -61,9 +59,6 @@ public class GOLView implements Runnable{
         rootFrame.pack();
         rootFrame.setVisible(true);
 
-    }
-    public void displayDialog(String title,String message){
-        JOptionPane.showMessageDialog(this.frame,message,title,JOptionPane.INFORMATION_MESSAGE);
     }
     public void disableAllButtonsBeside(AbstractButton button){
         for(AbstractButton btn: this.controlButtons){
@@ -80,9 +75,5 @@ public class GOLView implements Runnable{
     public void updateGrid(int x,int y,boolean value){
         //passthrough
         this.panel.updateCell(x,y,value);
-    }
-    public void resetGrid(){
-        //pass through
-        this.panel.resetGrid();
     }
 }

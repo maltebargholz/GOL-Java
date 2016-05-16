@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class GridPanel extends JPanel{
     private GridCellComponent[][] cells;
-    private ArrayList<GridCellComponent> activeCells;
-
 	public GridPanel(MouseListener mouseHandler,int amountX,int amountY){
 		this.setOpaque(true);
         this.createGrid(mouseHandler,amountX,amountY);
@@ -17,8 +15,6 @@ public class GridPanel extends JPanel{
 	public void createGrid(MouseListener handler,int x, int y){
 		this.setLayout(new GridLayout(x,y));
         this.cells = new GridCellComponent[x][y];
-        this.activeCells = new ArrayList<GridCellComponent>(x*y);//we have a maximum of n*m active cells;
-
 		for(int i = 0; i < y; ++i){
 			for(int j = 0; j < x; ++j){
 				GridCellComponent cell = new GridCellComponent(handler,j,i,
@@ -35,17 +31,5 @@ public class GridPanel extends JPanel{
     public void updateCell(int indexX,int indexY,boolean value){//must be synchronized to avoid double adding cells.
         GridCellComponent cell = this.cells[indexX][indexY];
         cell.setActive(value);
-        if(value){
-            activeCells.add(cell);
-        }
-        else{
-            activeCells.remove(cell);
-        }
     } 
-    public synchronized void resetGrid(){
-        for(GridCellComponent cell: this.activeCells){
-            cell.setActive(false);
-        } 
-        this.activeCells.clear();//reset.
-    }
 }
